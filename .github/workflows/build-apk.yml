@@ -21,7 +21,7 @@ jobs:
       run: npm install
 
     - name: Update Capacitor Android
-      run: npx cap update android
+      run: npx --yes @capacitor/cli update android
 
     - name: Set up JDK 17
       uses: actions/setup-java@v4
