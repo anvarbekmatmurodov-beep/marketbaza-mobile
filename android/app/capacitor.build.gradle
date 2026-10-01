@@ -1,5 +1,5 @@
-// Capacitor app build script
-apply from: "../node_modules/@capacitor/android/cordova.variables.gradle"
+// Capacitor app build script corrected path
+apply from: "../../node_modules/@capacitor/android/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-android')
 }
