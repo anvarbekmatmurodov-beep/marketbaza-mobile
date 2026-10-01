@@ -5,19 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarketBaza</title>
     <style>
-        body {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-            background-color: #f4f4f9;
         }
-        h1 {
-            color: #2c3e50;
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 15px;
+        }
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:active {
+            background-color: #219653;
+        }
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>MarketBaza ilovasiga xush kelibsiz!</h1>
-    <p>Mobil ilova muvaffaqiyatli ishga tushdi.</p>
+
+    <!-- Kirish (Login) qismi -->
+    <div id="login-screen" class="card">
+        <h2>MarketBaza'ga kirish</h2>
+        <p style="color: #666; font-size: 14px; margin-top: 5px;">Iltimos, telefon raqamingizni kiriting</p>
+        <input type="tel" id="phone" placeholder="+998 -- --- -- --">
+        <button onclick="login()">Kirish</button>
+    </div>
+
+    <!-- Asosiy Oyna (Do'konchi paneli) -->
+    <div id="main-screen" class="hidden">
+        <div class="header">
+            <h2>MarketBaza</h2>
+            <p id="user-phone" style="font-size: 14px; margin-top: 5px;"></p>
+        </div>
+
+        <div class="card">
+            <h3>Mavjud mahsulotlar</h3>
+            <div class="product-item">
+                <div>
+                    <strong>Un 50kg</strong>
+                    <p style="font-size: 13px; color: #666;">Narxi: 220,000 so'm</p>
+                </div>
+                <button style="width: auto; padding: 8px 15px;" onclick="order('Un 50kg')">Zakaz</button>
+            </div>
+            <div class="product-item">
+                <div>
+                    <strong>Shakar 50kg</strong>
+                    <p style="font-size: 13px; color: #666;">Narxi: 450,000 so'm</p>
+                </div>
+                <button style="width: auto; padding: 8px 15px;" onclick="order('Shakar 50kg')">Zakaz</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const phone = document.getElementById('phone').value;
+            if(phone.length < 9) {
+                alert('Iltimos, telefon raqamni to‘g‘ri kiriting!');
+                return;
+            }
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('main-screen').classList.remove('hidden');
+            document.getElementById('user-phone').innerText = 'Foydalanuvchi: ' + phone;
+        }
+
+        function order(productName) {
+            alert(productName + ' uchun buyurtma qabul qilindi! 🚀');
+        }
+    </script>
+
 </body>
 </html>
